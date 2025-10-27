@@ -21,15 +21,117 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/css/glide.core.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/css/glide.theme.min.css">
 
-    {{-- css link --}}
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
+    <!-- Main CSS Variables and Base Styles -->
+    <style>
+        /* CSS Variables */
+        :root {
+            /* Colors */
+            --primary-color: #d4a762;
+            --primary-dark: #b89352;
+            --dark-color: #2a2a2a;
+            --light-color: #f8f9fa;
+            --gray-color: #6c757d;
+            --white: #ffffff;
+            --black: #000000;
+            
+            /* Typography */
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Playfair Display', serif;
+            
+            /* Spacing */
+            --section-padding: 80px 0;
+            --element-margin: 30px;
+            --container-padding: 15px;
+            
+            /* Transitions */
+            --transition: all 0.3s ease;
+            --transition-slow: all 0.6s ease;
+            
+            /* Shadows */
+            --shadow-light: 0 2px 15px rgba(0,0,0,0.1);
+            --shadow-medium: 0 5px 20px rgba(0,0,0,0.1);
+            --shadow-heavy: 0 15px 30px rgba(0,0,0,0.1);
+            
+            /* Border Radius */
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 20px;
+            --border-radius-circle: 50%;
+            
+            /* Button Sizes */
+            --btn-padding: 10px 25px;
+            --btn-radius: 30px;
+            
+            /* Z-index */
+            --z-low: 1;
+            --z-medium: 2;
+            --z-high: 3;
+        }
 
+        /* Base Styles */
+        body {
+            font-family: var(--font-primary);
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
 
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-secondary);
+        }
 
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--white);
+            padding: var(--btn-padding);
+            border-radius: var(--btn-radius);
+            font-weight: 600;
+            transition: var(--transition);
+        }
 
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 167, 98, 0.3);
+        }
 
+        .btn-outline-light {
+            border-radius: var(--btn-radius);
+            padding: var(--btn-padding);
+            font-weight: 600;
+            transition: var(--transition);
+        }
 
+        .btn-outline-light:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
 
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+    </style>
 </head>
 
 <body>
@@ -43,7 +145,7 @@
                 </a>
 
                 <!-- Mobile Toggle -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -67,10 +169,27 @@
                         </li>
                     </ul>
 
-                    <!-- Search and Icons -->
-                    <div class="d-flex align-items-center">
-                        <input type="text" class="search-box" placeholder="Search products...">
-                        <div class="d-flex ms-3">
+                    <!-- Enhanced Search Bar -->
+                    <div class="d-flex align-items-center flex-column flex-lg-row w-100 w-lg-auto">
+                        <div class="search-container">
+                            <div class="category-dropdown">
+                                All Categories
+                                <div class="category-menu">
+                                    <a href="/shop/women">Women's Collection</a>
+                                    <a href="/shop/men">Men's Collection</a>
+                                    <a href="/shop/accessories">Accessories</a>
+                                    <a href="/shop/shoes">Shoes</a>
+                                    <a href="/shop/bags">Bags</a>
+                                    <a href="/shop/jewelry">Jewelry</a>
+                                </div>
+                            </div>
+                            <input type="text" class="search-box" placeholder="Search products...">
+                            <button class="search-btn">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="d-flex ms-lg-3 mt-3 mt-lg-0">
                             <a href="/account" class="icon-btn">
                                 <i class="bi bi-person fs-5"></i>
                             </a>
@@ -89,383 +208,8 @@
         </nav>
     </header>
 
-
-
-    <!-- Hero Carousel -->
-    <section class="hero-carousel">
-        <div class="glide">
-            <div class="glide__track" data-glide-el="track">
-                <ul class="glide__slides">
-                    <li class="glide__slide carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                            alt="Summer Collection" class="carousel-image">
-                        <div class="carousel-overlay"></div>
-                        <div class="carousel-content">
-                            <h2>Summer Collection</h2>
-                            <p>Discover the latest trends</p>
-                            <a href="/shop/summer" class="btn btn-primary">Shop Now</a>
-                        </div>
-                    </li>
-                    <li class="glide__slide carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                            alt="Elegant Styles" class="carousel-image">
-                        <div class="carousel-overlay"></div>
-                        <div class="carousel-content">
-                            <h2>Elegant Styles</h2>
-                            <p>Premium quality fabrics</p>
-                            <a href="/shop/premium" class="btn btn-primary">View Collection</a>
-                        </div>
-                    </li>
-                    <li class="glide__slide carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                            alt="New Arrivals" class="carousel-image">
-                        <div class="carousel-overlay"></div>
-                        <div class="carousel-content">
-                            <h2>New Arrivals</h2>
-                            <p>Fresh styles for the season</p>
-                            <a href="/shop/new-arrivals" class="btn btn-primary">Explore</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="glide__bullets" data-glide-el="controls[nav]">
-                <button class="glide__bullet" data-glide-dir="=0"></button>
-                <button class="glide__bullet" data-glide-dir="=1"></button>
-                <button class="glide__bullet" data-glide-dir="=2"></button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Categories -->
-    <section class="featured-categories">
-        <div class="container">
-            <div class="section-title">
-                <h2>Shop Collections</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                            alt="Women's Collection">
-                        <div class="category-overlay">
-                            <h3>Women's Collection</h3>
-                            <a href="/shop/women" class="btn btn-outline-light mt-2">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                            alt="Men's Collection">
-                        <div class="category-overlay">
-                            <h3>Men's Collection</h3>
-                            <a href="/shop/men" class="btn btn-outline-light mt-2">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="category-card">
-                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                            alt="Accessories">
-                        <div class="category-overlay">
-                            <h3>Accessories</h3>
-                            <a href="/shop/accessories" class="btn btn-outline-light mt-2">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- New Arrivals Section -->
-    <section class="new-arrivals">
-        <div class="container">
-            <div class="section-title">
-                <h2>New Arrivals</h2>
-            </div>
-
-            <div class="product-carousel">
-                <div class="glide new-arrivals-carousel">
-                    <div class="glide__track" data-glide-el="track">
-                        <ul class="glide__slides">
-                            <li class="glide__slide">
-                                <div class="product-card">
-                                    <div class="product-image">
-                                        <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                            alt="Floral Summer Dress">
-                                        <span class="product-badge">New</span>
-                                        <div class="product-actions">
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-heart"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-bag"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Floral Summer Dress</h5>
-                                        <div class="product-price">$89.99</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="glide__slide">
-                                <div class="product-card">
-                                    <div class="product-image">
-                                        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                            alt="Linen Blazer">
-                                        <span class="product-badge">New</span>
-                                        <div class="product-actions">
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-heart"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-bag"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Linen Blazer</h5>
-                                        <div class="product-price">$129.99</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="glide__slide">
-                                <div class="product-card">
-                                    <div class="product-image">
-                                        <img src="https://images.unsplash.com/photo-1582142306909-195724d1a6ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                            alt="Silk Evening Gown">
-                                        <span class="product-badge">New</span>
-                                        <div class="product-actions">
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-heart"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-bag"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Silk Evening Gown</h5>
-                                        <div class="product-price">$199.99</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="glide__slide">
-                                <div class="product-card">
-                                    <div class="product-image">
-                                        <img src="https://images.unsplash.com/photo-1582418702059-97ebafb35d09?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                            alt="Casual Summer Set">
-                                        <span class="product-badge">New</span>
-                                        <div class="product-actions">
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-heart"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-bag"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Casual Summer Set</h5>
-                                        <div class="product-price">$79.99</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="glide__slide">
-                                <div class="product-card">
-                                    <div class="product-image">
-                                        <img src="https://images.unsplash.com/photo-1585487000113-6e5f4bc9a4f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                            alt="Elegant Maxi Dress">
-                                        <span class="product-badge">New</span>
-                                        <div class="product-actions">
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-heart"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-bag"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Elegant Maxi Dress</h5>
-                                        <div class="product-price">$149.99</div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i
-                                class="bi bi-chevron-left"></i></button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i
-                                class="bi bi-chevron-right"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trending Section -->
-    <section class="trending">
-        <div class="container">
-            <div class="section-title">
-                <h2>Trending Now</h2>
-            </div>
-
-            <div class="product-carousel">
-                <div class="glide trending-carousel">
-                    <div class="glide__track" data-glide-el="track">
-                        <ul class="glide__slides">
-                            <li class="glide__slide">
-                                <div class="product-card">
-                                    <div class="product-image">
-                                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                            alt="Classic White Shirt">
-                                        <span class="product-badge">Trending</span>
-                                        <div class="product-actions">
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-heart"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-bag"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Classic White Shirt</h5>
-                                        <div class="product-price">$59.99</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="glide__slide">
-                                <div class="product-card">
-                                    <div class="product-image">
-                                        <img src="https://images.unsplash.com/photo-1582418702059-97ebafb35d09?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                            alt="Denim Jacket">
-                                        <span class="product-badge">Trending</span>
-                                        <div class="product-actions">
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-heart"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-bag"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Denim Jacket</h5>
-                                        <div class="product-price">$89.99</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="glide__slide">
-                                <div class="product-card">
-                                    <div class="product-image">
-                                        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                            alt="Leather Handbag">
-                                        <span class="product-badge">Trending</span>
-                                        <div class="product-actions">
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-heart"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-bag"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Leather Handbag</h5>
-                                        <div class="product-price">$159.99</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="glide__slide">
-                                <div class="product-card">
-                                    <div class="product-image">
-                                        <img src="https://images.unsplash.com/photo-1582142306909-195724d1a6ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                            alt="Wide Leg Trousers">
-                                        <span class="product-badge">Trending</span>
-                                        <div class="product-actions">
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-heart"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-bag"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Wide Leg Trousers</h5>
-                                        <div class="product-price">$79.99</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="glide__slide">
-                                <div class="product-card">
-                                    <div class="product-image">
-                                        <img src="https://images.unsplash.com/photo-1585487000113-6e5f4bc9a4f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                            alt="Knit Sweater">
-                                        <span class="product-badge">Trending</span>
-                                        <div class="product-actions">
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-heart"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="#" class="product-action-btn">
-                                                <i class="bi bi-bag"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-title">Knit Sweater</h5>
-                                        <div class="product-price">$69.99</div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i
-                                class="bi bi-chevron-left"></i></button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i
-                                class="bi bi-chevron-right"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+    <!-- Main Content -->
+    
 
     <!-- Footer Section -->
     <footer class="fortelle-footer">
@@ -540,80 +284,431 @@
     <!-- Glide.js for lightweight carousel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/glide.min.js"></script>
 
+    <!-- Header & Footer JS -->
     <script>
-
-        // Initialize Hero Carousel
-        new Glide('.glide', {
-            type: 'carousel',
-            autoplay: 5000,
-            animationDuration: 800,
-            hoverpause: true,
-            perView: 1,
-            gap: 0
-        }).mount();
-
-        // Initialize New Arrivals Carousel
-        new Glide('.new-arrivals-carousel', {
-            type: 'carousel',
-            autoplay: 4000,
-            animationDuration: 600,
-            hoverpause: true,
-            perView: 4,
-            gap: 30,
-            breakpoints: {
-                1200: {
-                    perView: 3
-                },
-                992: {
-                    perView: 2
-                },
-                576: {
-                    perView: 1
-                }
-            }
-        }).mount();
-
-        // Initialize Trending Carousel
-        new Glide('.trending-carousel', {
-            type: 'carousel',
-            autoplay: 4500,
-            animationDuration: 600,
-            hoverpause: true,
-            perView: 4,
-            gap: 30,
-            breakpoints: {
-                1200: {
-                    perView: 3
-                },
-                992: {
-                    perView: 2
-                },
-                576: {
-                    perView: 1
-                }
-            }
-        }).mount();
-
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.fortelle-navbar');
-            if (window.scrollY > 50) {
+            if (navbar && window.scrollY > 50) {
                 navbar.classList.add('scrolled');
-            } else {
+            } else if (navbar) {
                 navbar.classList.remove('scrolled');
             }
         });
+
+        // Search functionality
+        const searchBtn = document.querySelector('.search-btn');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', function() {
+                const searchTerm = document.querySelector('.search-box').value;
+                const category = document.querySelector('.category-dropdown').textContent.trim();
+                if (searchTerm) {
+                    alert(`Searching for "${searchTerm}" in ${category}`);
+                    // In a real implementation, you would redirect to search results
+                    // window.location.href = `/search?q=${encodeURIComponent(searchTerm)}&category=${encodeURIComponent(category)}`;
+                }
+            });
+        }
+
+        // Allow pressing Enter to search
+        const searchBox = document.querySelector('.search-box');
+        if (searchBox) {
+            searchBox.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.querySelector('.search-btn').click();
+                }
+            });
+        }
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
+
+    <!-- Header & Footer CSS -->
+    <style>
+        /* Header Styles */
+        .fortelle-navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            padding: 15px 0;
+        }
+
+        .fortelle-navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .fortelle-logo {
+            font-family: var(--font-secondary);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-color);
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .fortelle-logo:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .nav-link {
+            color: var(--dark-color) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav-link:hover:before {
+            visibility: visible;
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        /* Enhanced Search Bar */
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 320px;
+            max-width: 100%;
+        }
+
+        .category-dropdown {
+            border: 1px solid #e0e0e0;
+            border-right: none;
+            border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
+            padding: 8px 15px;
+            background: var(--white);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+            min-width: 120px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            white-space: nowrap;
+        }
+
+        .category-dropdown:hover {
+            background: #f8f9fa;
+        }
+
+        .category-dropdown:after {
+            content: '\F229';
+            font-family: 'bootstrap-icons';
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        .category-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200px;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-heavy);
+            z-index: var(--z-high);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+        }
+
+        .category-dropdown:hover .category-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .category-menu a {
+            display: block;
+            padding: 10px 15px;
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .category-menu a:hover {
+            background: #f8f9fa;
+            color: var(--primary-color);
+        }
+
+        .category-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .search-box {
+            border: 1px solid #e0e0e0;
+            border-left: none;
+            border-right: none;
+            padding: 8px 15px;
+            transition: var(--transition);
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .search-box:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .search-btn {
+            border: 1px solid #e0e0e0;
+            border-left: none;
+            border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+            background: var(--white);
+            padding: 8px 15px;
+            transition: var(--transition);
+            color: var(--dark-color);
+        }
+
+        .search-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .icon-btn {
+            position: relative;
+            color: var(--dark-color);
+            margin-left: 15px;
+            transition: var(--transition);
+        }
+
+        .icon-btn:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: var(--border-radius-circle);
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* Footer Styles */
+        .fortelle-footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-secondary);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-logo:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            color: var(--white);
+        }
+
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            transition: var(--transition);
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            text-decoration: none;
+            transform: translateX(5px);
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--border-radius-circle);
+            color: var(--white);
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Header & Footer */
+        @media (max-width: 992px) {
+            .search-container {
+                width: 100%;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .navbar-nav {
+                text-align: center;
+                margin-top: 15px;
+            }
+            
+            .nav-link {
+                margin: 5px 0;
+            }
+            
+            .icon-btn {
+                margin-left: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .fortelle-logo {
+                font-size: 24px;
+            }
+            
+            .category-dropdown {
+                min-width: 100px;
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+            
+            .search-box {
+                padding: 8px 10px;
+            }
+            
+            .search-btn {
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .fortelle-logo {
+                font-size: 22px;
+            }
+            
+            .category-dropdown {
+                min-width: 80px;
+                font-size: 11px;
+                padding: 6px 8px;
+            }
+            
+            .search-box {
+                padding: 6px 8px;
+                font-size: 12px;
+            }
+            
+            .search-btn {
+                padding: 6px 10px;
+            }
+            
+            .icon-btn {
+                margin-left: 8px;
+            }
+            
+            .category-menu {
+                width: 180px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .category-dropdown {
+                min-width: 70px;
+                font-size: 10px;
+                padding: 5px 6px;
+            }
+            
+            .search-box {
+                padding: 5px 6px;
+                font-size: 11px;
+            }
+            
+            .search-btn {
+                padding: 5px 8px;
+            }
+            
+            .icon-btn {
+                margin-left: 5px;
+            }
+            
+            .category-menu {
+                width: 160px;
+            }
+            
+            .category-menu a {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
 </body>
 
 </html>

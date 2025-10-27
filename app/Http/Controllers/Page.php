@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class Page extends Controller
 {
     public function home(){
-        return view('frontend.layouts.app');
+        return view('frontend.home');
     }
 }
