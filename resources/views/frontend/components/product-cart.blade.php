@@ -1,7 +1,7 @@
 <div class="product-card">
     <div class="product-image">
-        <img src="{{ $image }}" alt="{{ $name }}">
-        <span class="product-badge">{{ $badge }}</span>
+        <img src="" alt="">
+        <span class="product-badge"></span>
         <div class="product-actions">
             <a href="#" class="product-action-btn">
                 <i class="bi bi-heart"></i>
@@ -15,8 +15,8 @@
         </div>
     </div>
     <div class="product-info">
-        <h5 class="product-title">{{ $name }}</h5>
-        <div class="product-price">${{ $price }}</div>
+        <h5 class="product-title"></h5>
+        <div class="product-price">$</div>
     </div>
 </div>
 

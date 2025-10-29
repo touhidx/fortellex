@@ -1,6 +1,7 @@
 @extends('frontend.layouts.app')
 
-@section('slot')
+
+@section('content')
     <!-- Hero Carousel Component -->
     @include('frontend.components.hero-carousel', [
         'heroSlides' => [

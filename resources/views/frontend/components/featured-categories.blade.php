@@ -1,23 +1,3 @@
-<section class="featured-categories">
-    <div class="container">
-        <div class="section-title">
-            <h2>Shop Collections</h2>
-        </div>
-        <div class="row">
-            @foreach($categories as $category)
-            <div class="col-md-4">
-                <div class="category-card">
-                    <img src="{{ $category['image'] }}" alt="{{ $category['name'] }}">
-                    <div class="category-overlay">
-                        <h3>{{ $category['name'] }}</h3>
-                        <a href="{{ $category['link'] }}" class="btn btn-outline-light mt-2">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
 
 <style>
     /* Featured Categories Styles */
@@ -89,3 +69,26 @@
         }
     }
 </style>
+
+
+<section class="featured-categories">
+    <div class="container">
+        <div class="section-title">
+            <h2>Shop Collections</h2>
+        </div>
+        <div class="row">
+            @foreach($categories as $category)
+            <div class="col-md-4">
+                <div class="category-card">
+                    <img src="{{ $category['image'] }}" alt="{{ $category['name'] }}">
+                    <div class="category-overlay">
+                        <h3>{{ $category['name'] }}</h3>
+                        <a href="{{ $category['link'] }}" class="btn btn-outline-light mt-2">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+

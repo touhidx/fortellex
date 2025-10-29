@@ -33,35 +33,35 @@
             --gray-color: #6c757d;
             --white: #ffffff;
             --black: #000000;
-            
+
             /* Typography */
             --font-primary: 'Montserrat', sans-serif;
             --font-secondary: 'Playfair Display', serif;
-            
+
             /* Spacing */
             --section-padding: 80px 0;
             --element-margin: 30px;
             --container-padding: 15px;
-            
+
             /* Transitions */
             --transition: all 0.3s ease;
             --transition-slow: all 0.6s ease;
-            
+
             /* Shadows */
-            --shadow-light: 0 2px 15px rgba(0,0,0,0.1);
-            --shadow-medium: 0 5px 20px rgba(0,0,0,0.1);
-            --shadow-heavy: 0 15px 30px rgba(0,0,0,0.1);
-            
+            --shadow-light: 0 2px 15px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 15px 30px rgba(0, 0, 0, 0.1);
+
             /* Border Radius */
             --border-radius-sm: 4px;
             --border-radius: 8px;
             --border-radius-lg: 20px;
             --border-radius-circle: 50%;
-            
+
             /* Button Sizes */
             --btn-padding: 10px 25px;
             --btn-radius: 30px;
-            
+
             /* Z-index */
             --z-low: 1;
             --z-medium: 2;
@@ -75,7 +75,17 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        body>main {
+            padding-top: 90px;
+        }
+
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: var(--font-secondary);
         }
 
@@ -145,13 +155,14 @@
                 </a>
 
                 <!-- Mobile Toggle -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarContent">
-                    <!-- Main Navigation -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Main Navigation - Moved to left on mobile -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mobile-nav-left">
                         <li class="nav-item">
                             <a class="nav-link" href="/">Home</a>
                         </li>
@@ -159,18 +170,21 @@
                             <a class="nav-link" href="/shop">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
+                            <a class="nav-link" href="/hot-deals">Hot Deals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/blog">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contact</a>
+                            <a class="nav-link" href="/contact">Contact Us</a>
                         </li>
                     </ul>
 
                     <!-- Enhanced Search Bar -->
-                    <div class="d-flex align-items-center flex-column flex-lg-row w-100 w-lg-auto">
+                    <div class="d-flex align-items-center flex-column flex-lg-row w-100 w-lg-auto search-section">
                         <div class="search-container">
                             <div class="category-dropdown">
                                 All Categories
@@ -188,11 +202,9 @@
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
-                        
-                        <div class="d-flex ms-lg-3 mt-3 mt-lg-0">
-                            <a href="/account" class="icon-btn">
-                                <i class="bi bi-person fs-5"></i>
-                            </a>
+
+                        <!-- Icons Section - Moved to right on desktop -->
+                        <div class="d-flex ms-lg-4 mt-3 mt-lg-0 icons-section">
                             <a href="/wishlist" class="icon-btn">
                                 <i class="bi bi-heart fs-5"></i>
                                 <span class="cart-count">3</span>
@@ -200,6 +212,9 @@
                             <a href="/cart" class="icon-btn">
                                 <i class="bi bi-bag fs-5"></i>
                                 <span class="cart-count">5</span>
+                            </a>
+                            <a href="/account" class="icon-btn">
+                                <i class="bi bi-person fs-5"></i>
                             </a>
                         </div>
                     </div>
@@ -209,8 +224,9 @@
     </header>
 
     <!-- Main Content -->
-    
-
+    <main class="">
+        @yield('content')
+    </main>
     <!-- Footer Section -->
     <footer class="fortelle-footer">
         <div class="container">
@@ -234,9 +250,10 @@
                     <ul class="footer-links list-unstyled">
                         <li><a href="/">Home</a></li>
                         <li><a href="/shop">Shop</a></li>
-                        <li><a href="/about">About</a></li>
+                        <li><a href="/hot-deals">Hot Deals</a></li>
+                        <li><a href="/about">About Us</a></li>
                         <li><a href="/blog">Blog</a></li>
-                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -268,7 +285,7 @@
             <!-- Footer Bottom -->
             <div class="row mt-5 pt-4 border-top border-secondary">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2023 Fortelle. All rights reserved.</p>
+                    <p class="mb-0">&copy; 2025 Fortelle. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <img src="https://via.placeholder.com/300x30?text=Payment+Methods" alt="Payment Methods"
@@ -497,6 +514,7 @@
             padding: 8px 15px;
             transition: var(--transition);
             color: var(--dark-color);
+            font-size: 14px;
         }
 
         .search-btn:hover {
@@ -582,12 +600,13 @@
             transition: var(--transition);
             display: inline-block;
             margin-bottom: 10px;
+            text-decoration: none;
         }
 
         .footer-links a:hover {
             color: var(--primary-color);
             text-decoration: none;
-            transform: translateX(5px);
+
         }
 
         .social-icons a {
@@ -596,7 +615,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: var(--border-radius-circle);
             color: var(--white);
             margin-right: 10px;
@@ -608,25 +627,63 @@
             transform: translateY(-3px);
         }
 
-        /* Responsive Header & Footer */
-        @media (max-width: 992px) {
+        /* Desktop Layout Adjustments */
+        @media (min-width: 992px) {
+            .search-section {
+                flex: 1;
+                justify-content: center;
+            }
+
+            .icons-section {
+                margin-left: auto !important;
+                margin-right: 0 !important;
+            }
+
+            .icon-btn {
+                margin-left: 20px;
+            }
+
+            /* Adjust navigation spacing for more items */
+            .navbar-nav .nav-item {
+                margin: 0 8px;
+            }
+
+            .nav-link {
+                margin: 0 8px;
+                font-size: 15px;
+            }
+        }
+
+        /* Mobile Layout Adjustments */
+        @media (max-width: 991px) {
             .search-container {
                 width: 100%;
                 margin-top: 15px;
                 margin-bottom: 15px;
             }
-            
-            .navbar-nav {
-                text-align: center;
+
+            .mobile-nav-left {
+                text-align: left;
                 margin-top: 15px;
+                padding-left: 15px;
             }
-            
+
             .nav-link {
                 margin: 5px 0;
+                text-align: left;
+                padding-left: 0;
+                font-size: 16px;
             }
-            
+
+            .icons-section {
+                justify-content: center;
+                width: 100%;
+                margin-top: 15px;
+            }
+
             .icon-btn {
-                margin-left: 10px;
+                margin-left: 20px;
+                margin-right: 20px;
             }
         }
 
@@ -634,19 +691,23 @@
             .fortelle-logo {
                 font-size: 24px;
             }
-            
+
             .category-dropdown {
                 min-width: 100px;
                 font-size: 12px;
                 padding: 8px 10px;
             }
-            
+
             .search-box {
                 padding: 8px 10px;
             }
-            
+
             .search-btn {
                 padding: 8px 12px;
+            }
+
+            .nav-link {
+                font-size: 15px;
             }
         }
 
@@ -654,28 +715,35 @@
             .fortelle-logo {
                 font-size: 22px;
             }
-            
+
             .category-dropdown {
                 min-width: 80px;
                 font-size: 11px;
                 padding: 6px 8px;
             }
-            
+
             .search-box {
                 padding: 6px 8px;
                 font-size: 12px;
             }
-            
+
             .search-btn {
                 padding: 6px 10px;
+                font-size: 12px;
+
             }
-            
+
             .icon-btn {
-                margin-left: 8px;
+                margin-left: 15px;
+                margin-right: 15px;
             }
-            
+
             .category-menu {
                 width: 180px;
+            }
+
+            .nav-link {
+                font-size: 14px;
             }
         }
 
@@ -685,27 +753,33 @@
                 font-size: 10px;
                 padding: 5px 6px;
             }
-            
+
             .search-box {
                 padding: 5px 6px;
                 font-size: 11px;
             }
-            
+
             .search-btn {
                 padding: 5px 8px;
+                font-size: 11px;
             }
-            
+
             .icon-btn {
-                margin-left: 5px;
+                margin-left: 10px;
+                margin-right: 10px;
             }
-            
+
             .category-menu {
                 width: 160px;
             }
-            
+
             .category-menu a {
                 padding: 8px 12px;
                 font-size: 12px;
+            }
+
+            .nav-link {
+                font-size: 13px;
             }
         }
     </style>

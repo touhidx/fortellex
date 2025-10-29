@@ -10,7 +10,7 @@
                     <ul class="glide__slides">
                         @foreach($products as $product)
                         <li class="glide__slide">
-                            @include('frontend.components.product-card', $product)
+                            @include('components.product-card', $product)
                         </li>
                         @endforeach
                     </ul>
