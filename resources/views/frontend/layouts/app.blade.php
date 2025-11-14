@@ -39,7 +39,7 @@
             --font-secondary: 'Playfair Display', serif;
 
             /* Spacing */
-            --section-padding: 80px 0;
+            --section-padding: 24px 0;
             --element-margin: 30px;
             --container-padding: 15px;
 
@@ -75,8 +75,21 @@
             overflow-x: hidden;
         }
 
-        body>main {
-            padding-top: 90px;
+        /* margin top for all pages */
+        .main {
+            margin-top: 0.5625rem;
+        }
+
+        .about-page,
+        .cart-container,
+        .checkout-page,
+        .contact-page,
+        .hot-deals-page,
+        .product-details-page,
+        .register-card,
+        .shop-page,
+        .wishlist-container {
+            margin-top: 7.875rem;
         }
 
 
@@ -141,218 +154,9 @@
             height: 3px;
             background: var(--primary-color);
         }
-    </style>
-</head>
 
-<body>
-    <!-- Header Section -->
-    <header>
-        <nav class="navbar navbar-expand-lg fortelle-navbar fixed-top">
-            <div class="container">
-                <!-- Logo -->
-                <a class="navbar-brand" href="/">
-                    <span class="fortelle-logo">FORTELLE</span>
-                </a>
 
-                <!-- Mobile Toggle -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <!-- Main Navigation - Moved to left on mobile -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mobile-nav-left">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/shop">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/hot-deals">Hot Deals</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/blog">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contact Us</a>
-                        </li>
-                    </ul>
-
-                    <!-- Enhanced Search Bar -->
-                    <div class="d-flex align-items-center flex-column flex-lg-row w-100 w-lg-auto search-section">
-                        <div class="search-container">
-                            <div class="category-dropdown">
-                                All Categories
-                                <div class="category-menu">
-                                    <a href="/shop/women">Women's Collection</a>
-                                    <a href="/shop/men">Men's Collection</a>
-                                    <a href="/shop/accessories">Accessories</a>
-                                    <a href="/shop/shoes">Shoes</a>
-                                    <a href="/shop/bags">Bags</a>
-                                    <a href="/shop/jewelry">Jewelry</a>
-                                </div>
-                            </div>
-                            <input type="text" class="search-box" placeholder="Search products...">
-                            <button class="search-btn">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </div>
-
-                        <!-- Icons Section - Moved to right on desktop -->
-                        <div class="d-flex ms-lg-4 mt-3 mt-lg-0 icons-section">
-                            <a href="/wishlist" class="icon-btn">
-                                <i class="bi bi-heart fs-5"></i>
-                                <span class="cart-count">3</span>
-                            </a>
-                            <a href="/cart" class="icon-btn">
-                                <i class="bi bi-bag fs-5"></i>
-                                <span class="cart-count">5</span>
-                            </a>
-                            <a href="/account" class="icon-btn">
-                                <i class="bi bi-person fs-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main class="">
-        @yield('content')
-    </main>
-    <!-- Footer Section -->
-    <footer class="fortelle-footer">
-        <div class="container">
-            <div class="row">
-                <!-- About Column -->
-                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                    <a href="/" class="footer-logo">FORTELLE</a>
-                    <p class="mt-3">Fortelle is a premium fashion destination offering curated collections for the
-                        modern individual. We blend timeless elegance with contemporary style.</p>
-                    <div class="social-icons mt-4">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-twitter"></i></a>
-                        <a href="#"><i class="bi bi-pinterest"></i></a>
-                    </div>
-                </div>
-
-                <!-- Quick Links Column -->
-                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-                    <h4 class="footer-title">Quick Links</h4>
-                    <ul class="footer-links list-unstyled">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/shop">Shop</a></li>
-                        <li><a href="/hot-deals">Hot Deals</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/contact">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <!-- Customer Service Column -->
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h4 class="footer-title">Customer Service</h4>
-                    <ul class="footer-links list-unstyled">
-                        <li><a href="/account">My Account</a></li>
-                        <li><a href="/order-tracking">Order Tracking</a></li>
-                        <li><a href="/wishlist">Wishlist</a></li>
-                        <li><a href="/shipping-info">Shipping Info</a></li>
-                        <li><a href="/returns">Returns & Exchanges</a></li>
-                        <li><a href="/size-guide">Size Guide</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact Column -->
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="footer-title">Contact Us</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><i class="bi bi-geo-alt me-2"></i> 123 Fashion Ave, New York</li>
-                        <li class="mb-3"><i class="bi bi-telephone me-2"></i> +1 (555) 123-4567</li>
-                        <li class="mb-3"><i class="bi bi-envelope me-2"></i> info@fortelle.com</li>
-                        <li class="mb-3"><i class="bi bi-clock me-2"></i> Mon-Fri: 9AM - 6PM</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Footer Bottom -->
-            <div class="row mt-5 pt-4 border-top border-secondary">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2025 Fortelle. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <img src="https://via.placeholder.com/300x30?text=Payment+Methods" alt="Payment Methods"
-                        height="30">
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Glide.js for lightweight carousel -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/glide.min.js"></script>
-
-    <!-- Header & Footer JS -->
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.fortelle-navbar');
-            if (navbar && window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else if (navbar) {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Search functionality
-        const searchBtn = document.querySelector('.search-btn');
-        if (searchBtn) {
-            searchBtn.addEventListener('click', function() {
-                const searchTerm = document.querySelector('.search-box').value;
-                const category = document.querySelector('.category-dropdown').textContent.trim();
-                if (searchTerm) {
-                    alert(`Searching for "${searchTerm}" in ${category}`);
-                    // In a real implementation, you would redirect to search results
-                    // window.location.href = `/search?q=${encodeURIComponent(searchTerm)}&category=${encodeURIComponent(category)}`;
-                }
-            });
-        }
-
-        // Allow pressing Enter to search
-        const searchBox = document.querySelector('.search-box');
-        if (searchBox) {
-            searchBox.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    document.querySelector('.search-btn').click();
-                }
-            });
-        }
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-
-    <!-- Header & Footer CSS -->
-    <style>
+        /* <!-- Header & Footer CSS --> */
         /* Header Styles */
         .fortelle-navbar {
             background-color: rgba(255, 255, 255, 0.95);
@@ -532,7 +336,6 @@
 
         .icon-btn:hover {
             color: var(--primary-color);
-            transform: translateY(-2px);
         }
 
         .cart-count {
@@ -783,6 +586,217 @@
             }
         }
     </style>
+
+    @yield('styles')
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar navbar-expand-lg fortelle-navbar fixed-top">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="/">
+                    <span class="fortelle-logo">FORTELLE</span>
+                </a>
+
+                <!-- Mobile Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <!-- Main Navigation - Moved to left on mobile -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mobile-nav-left">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/shop">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/hot-deals">Hot Deals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact Us</a>
+                        </li>
+                    </ul>
+
+                    <!-- Enhanced Search Bar -->
+                    <div class="d-flex align-items-center flex-column flex-lg-row w-100 w-lg-auto search-section">
+                        <div class="search-container">
+                            <div class="category-dropdown">
+                                All Categories
+                                <div class="category-menu">
+                                    <a href="/shop/women">Women's Collection</a>
+                                    <a href="/shop/men">Men's Collection</a>
+                                    <a href="/shop/accessories">Accessories</a>
+                                    <a href="/shop/shoes">Shoes</a>
+                                    <a href="/shop/bags">Bags</a>
+                                    <a href="/shop/jewelry">Jewelry</a>
+                                </div>
+                            </div>
+                            <input type="text" class="search-box" placeholder="Search products...">
+                            <button class="search-btn">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+
+                        <!-- Icons Section - Moved to right on desktop -->
+                        <div class="d-flex ms-lg-4 mt-3 mt-lg-0 icons-section">
+                            <a href="/wishlist" class="icon-btn">
+                                <i class="bi bi-heart fs-5"></i>
+                                <span class="cart-count">3</span>
+                            </a>
+                            <a href="/cart" class="icon-btn">
+                                <i class="bi bi-bag fs-5"></i>
+                                <span class="cart-count">5</span>
+                            </a>
+                            <a href="/account" class="icon-btn">
+                                <i class="bi bi-person fs-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        @yield('content')
+    </main>
+    <!-- Footer Section -->
+    <footer class="fortelle-footer">
+        <div class="container">
+            <div class="row">
+                <!-- About Column -->
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <a href="/" class="footer-logo">FORTELLE</a>
+                    <p class="mt-3">Fortelle is a premium fashion destination offering curated collections for the
+                        modern individual. We blend timeless elegance with contemporary style.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Column -->
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/hot-deals">Hot Deals</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service Column -->
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">Customer Service</h4>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="/account">My Account</a></li>
+                        <li><a href="/order-tracking">Order Tracking</a></li>
+                        <li><a href="/wishlist">Wishlist</a></li>
+                        <li><a href="/shipping-info">Shipping Info</a></li>
+                        <li><a href="/returns">Returns & Exchanges</a></li>
+                        <li><a href="/size-guide">Size Guide</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="bi bi-geo-alt me-2"></i> 123 Fashion Ave, New York</li>
+                        <li class="mb-3"><i class="bi bi-telephone me-2"></i> +1 (555) 123-4567</li>
+                        <li class="mb-3"><i class="bi bi-envelope me-2"></i> info@fortelle.com</li>
+                        <li class="mb-3"><i class="bi bi-clock me-2"></i> Mon-Fri: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="row mt-5 pt-4 border-top border-secondary">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Fortelle. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <img src="https://via.placeholder.com/300x30?text=Payment+Methods" alt="Payment Methods"
+                        height="30">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Glide.js for lightweight carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/glide.min.js"></script>
+
+    <!-- Header & Footer JS -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.fortelle-navbar');
+            if (navbar && window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else if (navbar) {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Search functionality
+        const searchBtn = document.querySelector('.search-btn');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', function() {
+                const searchTerm = document.querySelector('.search-box').value;
+                const category = document.querySelector('.category-dropdown').textContent.trim();
+                if (searchTerm) {
+                    alert(`Searching for "${searchTerm}" in ${category}`);
+                    // In a real implementation, you would redirect to search results
+                    // window.location.href = `/search?q=${encodeURIComponent(searchTerm)}&category=${encodeURIComponent(category)}`;
+                }
+            });
+        }
+
+        // Allow pressing Enter to search
+        const searchBox = document.querySelector('.search-box');
+        if (searchBox) {
+            searchBox.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.querySelector('.search-btn').click();
+                }
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- Page-specific scripts -->
+    @yield('scripts')
+
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 @section('title', 'Contact Us - Fortelle')
 
 @section('content')
-<div class="container">
+<div class="container contact-page">
     <div class="page-hero mb-5">
         <div class="container">
             <h1 class="display-4 fw-bold mb-4">CONTACT US</h1>

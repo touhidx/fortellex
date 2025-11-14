@@ -3,7 +3,7 @@
 
 @section('content')
     <!-- Hero Carousel Component -->
-    @include('frontend.components.hero-carousel', [
+    @include('components.hero-carousel', [
         'heroSlides' => [
             [
                 'image' => 'https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
@@ -33,7 +33,7 @@
     ])
 
     <!-- Featured Categories Component -->
-    @include('frontend.components.featured-categories', [
+    @include('components.featured-categories', [
         'categories' => [
             [
                 'image' => 'https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
@@ -54,7 +54,7 @@
     ])
 
     <!-- New Arrivals Component -->
-    @include('frontend.components.product-carousel', [
+    @include('components.product-carousel', [
         'sectionClass' => 'new-arrivals',
         'carouselClass' => 'new-arrivals-carousel',
         'title' => 'New Arrivals',
@@ -93,7 +93,7 @@
     ])
 
     <!-- Trending Component -->
-    @include('frontend.components.product-carousel', [
+    @include('components.product-carousel', [
         'sectionClass' => 'trending',
         'carouselClass' => 'trending-carousel',
         'title' => 'Trending Now',

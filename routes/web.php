@@ -1,4 +1,3 @@
-
 <?php
 
 use App\Http\Controllers\PageController;
@@ -16,10 +15,18 @@ Route::post('/contact', [ContactController::class, 'submit'])->name('contact.sub
 
 
 // Additional Routes (placeholders)
-Route::get('/cart', function () { return view('pages.cart'); })->name('cart');
-Route::get('/wishlist', function () { return view('pages.wishlist'); })->name('wishlist');
-Route::get('/account', function () { return view('pages.account'); })->name('account');
+Route::get('/cart', function () { return view('frontend.pages.cart'); })->name('cart');
+Route::get('/product-details', function () { return view('frontend.pages.product-details'); })->name('product-details');
+Route::get('/wishlist', function () { return view('frontend.pages.wishlist'); })->name('wishlist');
+Route::get('/account', function () { return view('frontend.pages.register'); })->name('account');
 Route::get('/order-tracking', function () { return view('pages.order-tracking'); })->name('order-tracking');
 Route::get('/shipping-info', function () { return view('pages.shipping-info'); })->name('shipping-info');
 Route::get('/returns', function () { return view('pages.returns'); })->name('returns');
 Route::get('/size-guide', function () { return view('pages.size-guide'); })->name('size-guide');
+
+
+
+
+
+//dashboard routes
+Route::get('/dashboard', function () { return view('backend.layouts.app'); })->name('dashboard');
