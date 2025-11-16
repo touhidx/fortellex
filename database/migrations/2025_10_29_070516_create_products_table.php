@@ -21,13 +21,28 @@ return new class extends Migration
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('gallery')->nullable();
-            $table->decimal('regular_price' , 10 , 2)->default(0);
             $table->decimal('price' , 10 , 2)->default(0);
             $table->decimal('compare_at_price' , 10 , 2)->nullable();
             $table->decimal('cost_per_item' , 10 , 2)->nullable();
             $table->boolean('track_quantity')->default(true);
             $table->boolean('has_varients')->default(false);
-            $table->
+            $table->string('sku')->nullable();
+            $table->string('barcode')->nullable();
+            $table->decimal('weight' , 8 , 2)->nullable();
+            $table->decimal('height' , 8 , 2)->nullable();
+            $table->decimal('width' , 8 , 2 )->nullable();
+            $table->decimal('length', 8 , 2 )->nullable();
+            $table->integer('stock')->default(0);
+            $table->enum('status' , ['draft','active','archived'])->default('draft');
+            $table->timestamp('published_at')->nullable();
+            $table->json('tags')->default(json_encode([]));
+            $table->json('options')->nullable();
+            $table->json('variants')->nullable();
+            $table->text('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_keywords')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
             $table->timestamps();
         });
     }
